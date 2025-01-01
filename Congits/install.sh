@@ -5,6 +5,7 @@ apps=(
   "kitty"
   "nvim"
   "firefox"
+  "rofi"
 )
 
 # Install dependencies
