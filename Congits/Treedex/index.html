@@ -1,0 +1,123 @@
+<!--
+Remember to change the href's
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome</title>
+    <style>
+body {
+    background-color: #050505;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+a {
+    color: #0077aa;
+}
+/* tree */
+.tree, .tree ul {
+    font-family: monospace;
+    color: #b6b6b6;
+    list-style-type: none;
+    margin-left: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.4em;
+}
+
+.tree li {
+    margin: 0;
+    padding: 0 20px;
+    position: relative;
+}
+
+.tree li::before, .tree li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+.tree li::before {
+    border-top: 2px solid #ffffff;
+    top: 14px;
+    width: 15px;
+    height: 0;
+}
+
+.tree li::after {
+    border-left: 2px solid #ffffff;
+    height: 100%;
+    width: 0;
+    top: -15px;
+}
+
+.tree > li::after {
+    top: 15px;
+}
+
+.tree > li:last-child::after {
+    display: none;
+}
+.search-input {
+    text-decoration: white;
+    background-color: #050505;
+    display: inline-block;
+    margin-top: 20px;
+    border: 2px solid transparent;
+    outline: #ffffff;
+    color: #ffffff;
+}
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <ul class="tree">
+            <li>General
+                <ul>
+                    <li><a href="#">Gmail</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </li>
+            <li>Entertainment
+                <ul>
+                    <li><a href="#">YouTube</a>
+                    <li><a href="#">Movies</a>
+                    </li>
+                    </li>
+                    <li><a href="#">Reddit</a></li>
+                </ul>
+            <li>Music
+                <ul>
+                    <li><a href="#">Ytmusic</a></li>
+                    <li><a href="#">Soundcloud</a></li>
+                </ul>
+            <li class="dir">Files
+                <ul>
+                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">Documents</a></li>
+                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">Videos</a></li>
+
+                </ul>
+            </li>
+        </ul>
+                                
+<form method="get" action="https://www.google.com/search?client=firefox-b-1-d&amp;q=" style="text-align: center; margin-top: 50px;">
+    <input type="text" placeholder="Search.." autofocus="autofocus" name="q" class="search-input" autocomplete="on">
+</form>
+
+</body>
+
+</html>
+<!--Made with love, by Kylar LeDoux-->
+<!-- https://kylarled.xyz/ -->
