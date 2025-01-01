@@ -19,10 +19,10 @@ echo "Replacing/adding config files..."
 
 # i3
 sudo rm -rf i3
-mv ~/Congits/ ~/.config/
+mv ~/Configs-for-i3wm/Congits/i3/ ~/.config/
 
 # Kitty
-mv ~/Congits/kitty/ ~/.config/
+mv ~/Configs-for-i3wm/Congits/kitty/ ~/.config/
 
 # nvim
-mv ~/Congits/nvim ~/.config/
+mv ~/Configs-for-i3wm/Congits/nvim ~/.config/
