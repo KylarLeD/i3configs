@@ -36,4 +36,4 @@ sudo rm -rf ~/Configs-for-i3wm/
 # Also for good measure...
 sleep 1
 
-print("Finished, enjoy.")
+echo "finished, enjoy"
