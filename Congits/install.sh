@@ -18,7 +18,7 @@ sudo pacman -S "${apps[@]}"
 echo "Replacing/adding config files..."
 
 # i3
-sudo rm -rf i3
+sudo rm -rf ~/.config/i3/
 mv ~/Configs-for-i3wm/Congits/i3/ ~/.config/
 
 # Kitty
