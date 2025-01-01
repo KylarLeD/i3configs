@@ -3,7 +3,7 @@
 # Dependency list
 apps=(
   "kitty"
-  "nvim"
+  "neovim"
   "firefox"
   "rofi"
 )
