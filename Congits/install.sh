@@ -26,3 +26,14 @@ mv ~/Configs-for-i3wm/Congits/kitty/ ~/.config/
 
 # nvim
 mv ~/Configs-for-i3wm/Congits/nvim ~/.config/
+
+# I just put this here for good measure
+sleep 3
+
+# Delete empty directory
+sudo rm -rf ~/Configs-for-i3wm/
+
+# Also for good measure...
+sleep 1
+
+print("Finished, enjoy.")
