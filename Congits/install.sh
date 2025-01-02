@@ -4,7 +4,6 @@
 apps=(
   "kitty"
   "neovim"
-  "firefox"
   "rofi"
 )
 
