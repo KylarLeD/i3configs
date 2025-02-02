@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Dependency list
 apps=(
   "kitty"
@@ -7,32 +8,46 @@ apps=(
   "rofi"
 )
 
+
 # Install dependencies
 echo "installing dependencies..."
 sleep 1
 sudo pacman -S "${apps[@]}"
 
-# Overwrite config files.
 
+# Overwrite config files.
 echo "Replacing/adding config files..."
 
-# i3
+
+
+
+
+# Deletes i3 config directory, and adds mine
 sudo rm -rf ~/.config/i3/
 mv ~/Configs-for-i3wm/Congits/i3/ ~/.config/
 
-# Kitty
+
+# Moves my config directory to your .config directory
 mv ~/Configs-for-i3wm/Congits/kitty/ ~/.config/
 
-# nvim
+
+# Moves my nvim directory to your .config directory
 mv ~/Configs-for-i3wm/Congits/nvim ~/.config/
 
-# I just put this here for good measure
+
+# For good measure
 sleep 3
+
 
 # Delete empty directory
 sudo rm -rf ~/Configs-for-i3wm/
 
-# Also for good measure...
+
+# Also for good measure
 sleep 1
 
-echo "finished, enjoy"
+
+# Reload i3wm configuration
+i3-msg reload
+
+echo "Script complete, enjoy your new setup."
