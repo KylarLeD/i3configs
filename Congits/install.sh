@@ -6,6 +6,7 @@ apps=(
   "kitty"
   "neovim"
   "rofi"
+  "polybar"
 )
 
 
@@ -33,6 +34,10 @@ mv ~/Configs-for-i3wm/Congits/kitty/ ~/.config/
 
 # Moves my nvim directory to your .config directory
 mv ~/Configs-for-i3wm/Congits/nvim ~/.config/
+
+# Deletes and replaces polybar config
+sudo rm ~/etc/polybar/config.ini
+mv ~/configs-for-i3wm/Congits/polybar/config.ini ~/etc/polybar
 
 
 # For good measure
