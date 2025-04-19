@@ -1,25 +1,38 @@
-# Dependencies:
-# * feh
-# * dunst
-# * rofi
 
-#Setting mod key to Windows/Super key
+#############
+# pre-req's #
+#############
+
+exec_always feh --bg-scale ~/Documents/Wallpapers/wallpaper.png/
+exec_always --no-startup-id dunst
+exec polybar
+
+
+#########
+# binds #
+#########
+
+# Sets windows key as the mod key
 set $mod Mod4
 
-# Font
-font pango:Misc Tamsyn 11
+# Reload the configuration file
+bindsym $mod+Shift+c reload
 
-# Window border width
-for_window [class="^.*"] border pixel 3
-
-# Terminal
 bindsym $mod+Return exec kitty
-
-# Kill focused window
 bindsym $mod+q kill
-
-# Start rofi with my tweak
 bindsym $mod+space exec rofi -show run -width 700 -lines 14
+
+# Screenshot
+bindsym Print exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png --select > ~/Screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/Screenshots/screenshot_$NOW.png
+
+# Audio Adjust
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +10% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -10% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+
+# Brightness Adjust
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # Change focus
 bindsym $mod+h focus left
@@ -27,25 +40,67 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+bindsym $mod+r mode "resize"
 # Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# Split horizontal
+# Bind pane split-preference
 bindsym $mod+b split h
-
-# Split vertical
 bindsym $mod+v split v
 
-# Fullscreen
 bindsym $mod+f fullscreen toggle
 
 # Change container layout
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
+
+bindsym $mod+shift+m exec scrot 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+x exec i3lock -i ~/.config/i3/lockscreen.png
+
+# Restart i3
+bindsym $mod+Shift+r restart
+
+# Exit i3
+bindsym $mod+Shift+e exit
+
+
+##############
+# appearance #
+##############
+
+# Font
+font pango:Misc Tamsyn 11
+
+# Window border width
+for_window [class="^.*"] border pixel 1
+
+gaps outer 1
+gaps inner 5
+
+# Colors
+set $bg-color		#a6a6a6
+set $inactive-bg-color	#232323  
+set $text-color		#FFFFFF  
+set $inactive-text-color #B2B2B2  
+set $urgent-bg-color	#DC322F  
+
+# Windows colors
+#			border			background		text			indicator	
+client.focused		$text-color		$bg-color		$text-color		#a6a6a6 
+client.unfocused	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#FFFFFF 
+client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#a6a6a6 
+client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#FFFFFF 
+
+
+#############
+# workspace #
+#############
 
 # Workspaces
 set $workspace1 "1"
@@ -83,18 +138,6 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-# Assign applications to workspaces
-#assign [class="firefox"] $workspace1
-
-# Reload the configuration file
-bindsym $mod+Shift+c reload
-
-# Restart i3
-bindsym $mod+Shift+r restart
-
-# Exit i3
-bindsym $mod+Shift+e exit
-
 # Resize window
 mode "RESIZE" {
         
@@ -107,38 +150,3 @@ mode "RESIZE" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-# Resize
-bindsym $mod+r mode "resize"
- 
-# Colors
-set $bg-color		 #FFFFFF  
-set $inactive-bg-color	 #232323  
-set $text-color		 #FFFFFF  
-set $inactive-text-color #B2B2B2  
-set $urgent-bg-color	 #DC322F  
-
-# Windows colors
-#			border			background		text			indicator	
-client.focused		$text-color		$bg-color		$text-color		#FFFFFF 
-client.unfocused	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#FFFFFF 
-client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#FFFFFF 
-client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#FFFFFF 
-
-# Audio Adjust
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +10% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -10% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
-
-# Brightness Adjust
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-
-# Misc.
-bindsym $mod+shift+m exec scrot 
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+x exec bash ~/.config/i3/lock.sh
-exec_always feh --bg-scale ~/Pictures/Wallpaper.png
-exec_always --no-startup-id dunst
-
